@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="Koqumo’s Shop — невеликий магазин цікавих речей з доставкою Новою поштою по Україні.">
+  <title>Koqumo’s Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="topline">Доставка Новою поштою по Україні <span>·</span> Koqumo’s Shop</div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Koqumo's Shop — головна">
+      <span class="brand-mark">K<span>•</span></span>
+      <span class="brand-name">koqumo’s <small>SHOP</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Головна навігація">
+      <a href="#catalog">Каталог</a>
+      <a href="#about">Про магазин</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button admin-link" id="adminOpen" title="Панель магазину" aria-label="Панель магазину">⚙</button>
+      <button class="cart-button" id="cartOpen"><span>Кошик</span><b id="cartCount">0</b></button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> МАЛЕНЬКИЙ МАГАЗИН ВЕЛИКИХ ЗНАХІДОК</div>
+        <h1>Речі, які<br><em>хочеться</em> мати.</h1>
+        <p>Обирай улюблене. Ми подбаємо про пакування та відправлення Новою поштою.</p>
+        <a class="primary-button" href="#catalog">Переглянути каталог <span>↗</span></a>
+        <div class="hero-note"><span>✳</span> Нові товари з’являються поступово</div>
+      </div>
+      <div class="hero-art" aria-label="Декоративна композиція Koqumo's Shop">
+        <div class="art-sun"></div>
+        <div class="art-card art-card-back"><span>GOOD<br>THINGS</span><b>✳</b></div>
+        <div class="art-card art-card-front"><span class="art-k">K.</span><span class="art-line"></span><strong>KOQUMO<br>OBJECTS</strong><small>EST. 2026</small></div>
+        <div class="art-sticker">MADE<br>FOR YOU</div>
+        <div class="art-orbit"></div>
+      </div>
+    </section>
+
+    <section class="trust-strip wrap">
+      <div><span class="trust-icon">↗</span><span><b>Доставка по Україні</b><small>Через Нову пошту</small></span></div>
+      <div><span class="trust-icon">◇</span><span><b>Чесні ціни</b><small>Знижки видно одразу</small></span></div>
+      <div><span class="trust-icon">♡</span><span><b>Увага до деталей</b><small>Кожне замовлення важливе</small></span></div>
+    </section>
+
+    <section class="catalog-section wrap" id="catalog">
+      <div class="section-heading">
+        <div><div class="eyebrow">ЗНАЙДИ СВОЄ</div><h2>Каталог <span id="productTotal">0</span></h2></div>
+        <div class="catalog-tools"><label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Знайти товар..."></label><select id="sortSelect" aria-label="Сортування"><option value="popular">Спочатку нові</option><option value="cheap">Спочатку дешевші</option><option value="expensive">Спочатку дорожчі</option><option value="sale">Спочатку зі знижкою</option></select></div>
+      </div>
+      <div class="category-row" id="categoryRow"><button class="category-chip active" data-category="all">Усі товари</button><button class="category-chip" data-category="sale">Зі знижкою</button></div>
+      <div class="product-grid" id="productGrid"><div class="loading-state">Завантажуємо каталог…</div></div>
+    </section>
+
+    <section class="about-section wrap" id="about">
+      <div class="about-stamp">K.</div>
+      <div><div class="eyebrow">ПРО KOQUMO’S SHOP</div><h2>Менше зайвого.<br><em>Більше улюбленого.</em></h2></div>
+      <p>Koqumo’s Shop — магазин для речей, які приємно знаходити, дарувати та залишати собі. Доступні товари, зрозуміле оформлення й доставка Новою поштою.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap"><a class="brand footer-brand" href="#home"><span class="brand-mark">K<span>•</span></span><span class="brand-name">koqumo’s <small>SHOP</small></span></a><span>© <span id="yearNow"></span> Koqumo’s Shop</span><span>Зроблено з турботою в Україні</span></footer>
+
+  <div class="overlay" id="cartOverlay" hidden>
+    <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="drawer-head"><div><div class="eyebrow">ТВОЇ ПОКУПКИ</div><h2 id="cartTitle">Кошик</h2></div><button class="close-button" data-close="cartOverlay" aria-label="Закрити">×</button></div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-bottom"><div class="total-row"><span>Разом</span><strong id="cartTotal">0 ₴</strong></div><button class="primary-button full-button" id="checkoutOpen">Оформити замовлення <span>→</span></button><p class="fine-print">Доставка оплачується за тарифами Нової пошти.</p></div>
+    </aside>
+  </div>
+
+  <div class="overlay" id="checkoutOverlay" hidden>
+    <section class="modal checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+      <div class="modal-head"><div><div class="eyebrow">ЩЕ ТРОХИ — І ГОТОВО</div><h2 id="checkoutTitle">Оформлення</h2></div><button class="close-button" data-close="checkoutOverlay" aria-label="Закрити">×</button></div>
+      <form id="checkoutForm" class="checkout-form">
+        <label>Ім’я та прізвище<input name="customerName" required minlength="3" maxlength="100" placeholder="Наприклад, Олена Іваненко"></label>
+        <label>Номер телефону<input name="phone" type="tel" required inputmode="tel" placeholder="+380 XX XXX XX XX" pattern="[+0-9() -]{10,20}"></label>
+        <div class="form-divider">ДОСТАВКА НОВОЮ ПОШТОЮ</div>
+        <label>Місто<input id="cityInput" name="cityQuery" autocomplete="off" required placeholder="Почни вводити назву міста"><input type="hidden" name="cityRef" id="cityRef"></label>
+        <div class="suggestions" id="citySuggestions"></div>
+        <label>Відділення або поштомат<input id="warehouseInput" name="warehouseQuery" autocomplete="off" required disabled placeholder="Спочатку обери місто"><input type="hidden" name="warehouseRef" id="warehouseRef"></label>
+        <div class="suggestions" id="warehouseSuggestions"></div>
+        <label class="payment-select">Оплата<select name="paymentMethod"><option value="upon_receipt">Післяплата при отриманні</option><option value="transfer">За домовленістю з продавцем</option></select></label>
+        <label class="consent-line"><input type="checkbox" name="consent" required><span>Погоджуюсь передати ці дані магазину для оформлення замовлення.</span></label>
+        <div class="checkout-summary"><span>До сплати за товари</span><strong id="checkoutTotal">0 ₴</strong></div>
+        <button class="primary-button full-button" type="submit" id="placeOrderButton">Підтвердити замовлення <span>→</span></button>
+        <p class="fine-print">Після відправлення замовлення магазин зв’яжеться з тобою для підтвердження.</p>
+      </form>
+    </section>
+  </div>
+
+  <div class="overlay" id="adminOverlay" hidden>
+    <section class="modal admin-modal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+      <div class="modal-head"><div><div class="eyebrow">ТІЛЬКИ ДЛЯ ВЛАСНИКА</div><h2 id="adminTitle">Панель магазину</h2></div><button class="close-button" data-close="adminOverlay" aria-label="Закрити">×</button></div>
+      <div id="adminLogin" class="login-panel"><p>Увійди, щоб додавати товари, змінювати ціни та керувати замовленнями.</p><form id="loginForm"><label>Пароль адміністратора<input type="password" name="password" required autocomplete="current-password" placeholder="Пароль"></label><button class="primary-button full-button" type="submit">Увійти <span>→</span></button><p class="form-message" id="loginMessage"></p></form></div>
+      <div id="adminApp" hidden>
+        <div class="admin-toolbar"><div class="admin-tabs"><button class="admin-tab active" data-admin-tab="products">Товари</button><button class="admin-tab" data-admin-tab="orders">Замовлення</button><button class="admin-tab" data-admin-tab="shipping">Нова пошта</button></div><button class="text-button" id="adminLogout">Вийти</button></div>
+        <section class="admin-pane" id="adminProductsPane">
+          <div class="admin-subhead"><div><h3>Товари</h3><p>Створюй позиції, додавай фото та встановлюй знижки.</p></div><button class="small-primary" id="newProductButton">＋ Новий товар</button></div>
+          <form id="productForm" class="product-form" hidden>
+            <input type="hidden" name="id">
+            <div class="form-grid"><label>Назва товару<input name="name" required maxlength="100"></label><label>Категорія<input name="category" maxlength="40" placeholder="Наприклад, аксесуари"></label><label class="wide-field">Опис<textarea name="description" rows="3" maxlength="1000"></textarea></label><label class="wide-field">Посилання на фото<input name="imageUrl" type="url" placeholder="https://..."></label><label>Ціна, грн<input name="price" type="number" required min="1" step="0.01"></label><label>Знижка, %<input name="discountPercent" type="number" min="0" max="90" value="0"></label><label>Кількість на складі<input name="stock" type="number" min="0" step="1" value="1"></label></div>
+            <div class="form-actions"><button class="small-primary" type="submit">Зберегти товар</button><button class="text-button" type="button" id="cancelProductEdit">Скасувати</button></div><p class="form-message" id="productMessage"></p>
+          </form>
+          <div class="admin-list" id="adminProductList"></div>
+        </section>
+        <section class="admin-pane" id="adminOrdersPane" hidden><div class="admin-subhead"><div><h3>Замовлення</h3><p>Переглядай покупки та створюй експрес-накладні.</p></div><button class="text-button" id="refreshOrders">Оновити ↻</button></div><div class="admin-list" id="adminOrderList"><p class="empty-admin">Ще немає замовлень.</p></div></section>
+        <section class="admin-pane" id="adminShippingPane" hidden>
+          <div class="admin-subhead"><div><h3>Налаштування Нової пошти</h3><p>Дані відправника для створення ТТН. API-ключ додається окремим секретом Cloudflare.</p></div></div>
+          <form id="shippingForm" class="product-form shipping-form"><div class="form-grid"><label>Ref міста відправника<input name="citySender" required></label><label>Ref відправника<input name="sender" required></label><label>Ref адреси відправника<input name="senderAddress" required></label><label>Ref контактної особи<input name="contactSender" required></label><label>Телефон відправника<input name="sendersPhone" required placeholder="380XXXXXXXXX"></label><label>Вага посилки, кг<input name="weight" type="number" min="0.1" step="0.1" value="0.5" required></label></div><div class="form-actions"><button class="small-primary" type="submit">Зберегти дані відправника</button></div><p class="form-message" id="shippingMessage"></p></form>
+          <div class="np-help"><b>Де взяти Ref?</b><p>У кабінеті Нової пошти відкрий дані відправника. Для міста, відправника, адреси й контакту потрібні їхні технічні Ref. Не вставляй API-ключ у цю форму.</p><a href="https://novaposhta.ua/" target="_blank" rel="noopener">Кабінет Нової пошти ↗</a></div>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <template id="productCardTemplate"><article class="product-card"><div class="product-image-wrap"><img class="product-image" alt="" loading="lazy"><span class="sale-badge" hidden></span><button class="quick-add" aria-label="Додати до кошика">＋</button></div><div class="product-info"><div class="product-meta"><span class="product-category"></span><span class="stock-label"></span></div><h3 class="product-name"></h3><div class="price-row"><strong class="product-price"></strong><del class="old-price" hidden></del></div></div></article></template>
+</body>
+</html>
