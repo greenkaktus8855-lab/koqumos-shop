@@ -1,0 +1,26 @@
+name: Expand Koqumo source bundle
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".transfer/**"
+
+permissions:
+  contents: write
+
+jobs:
+  expand:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract project files
+        run: |
+          set -euo pipefail
+          cat .transfer/*.b64 | base64 -d | tar -xz --strip-components=1
+          rm -rf .transfer
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add Koqumo's Shop project sources"
+          git push
